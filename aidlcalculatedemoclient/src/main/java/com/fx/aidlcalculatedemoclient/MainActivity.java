@@ -55,11 +55,13 @@ public class MainActivity extends AppCompatActivity {
 
 
         Bundle bundle = new Bundle();
-        Intent intent = new Intent("com.fx.aidl.calculate.CalculateService");
-//        intent.setPackage("com.fx.aidl");
+        Intent intent = new Intent();
+        intent.setAction("com.fx.aidl.calculate.CalculateService");
+        intent.setPackage("com.fx.aidl");
         intent.putExtras(bundle);
-        bindService(new Intent(createExplicitFromImplicitIntent(this,intent)), mServiceConnection, Context.BIND_AUTO_CREATE);
-//        startService(intent);
+//        bindService(new Intent(createExplicitFromImplicitIntent(this,intent)), mServiceConnection, Context.BIND_AUTO_CREATE);
+        bindService(intent, mServiceConnection, Context.BIND_AUTO_CREATE);
+
 
 
         button.setOnClickListener(new View.OnClickListener() {
